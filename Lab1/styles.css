@@ -1,0 +1,15 @@
+#front {
+    position: absolute;
+    left: 30px;
+    top: 100px;
+    z-index: -1;
+}
+
+#back {
+    position: absolute;
+    z-index: 1;
+}
+
+#step2{
+
+}
