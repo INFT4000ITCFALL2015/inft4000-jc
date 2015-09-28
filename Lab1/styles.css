@@ -23,5 +23,33 @@
 #step2{
     position: absolute;
     top: 400px;
+    width: 100%;
 
 }
+
+#h1, #h2, #h3, #h4{
+    background-color: cornflowerblue;
+}
+
+#p1, #p2, #p3, #p4{
+    display: none;
+}
+
+#step3{
+    position: absolute;
+    top: 350px;
+    width: 100%;
+}
+
+#textLine{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#pic{
+    height: 300px;
+    width: 300px;
+
+}
+
+
