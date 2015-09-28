@@ -10,6 +10,18 @@
     z-index: 1;
 }
 
+#phil {
+    width: 315px;
+    height:275px;
+}
+
+#phil2{
+    width: 315px;
+    height:275px;
+}
+
 #step2{
+    position: absolute;
+    top: 400px;
 
 }
