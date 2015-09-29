@@ -1,7 +1,12 @@
-/**
- * Created by inet2005 on 9/22/15.
- */
 "use strict";
+
+document.getElementById("front").addEventListener("dblclick", changeZ);
+document.getElementById("back").addEventListener("dblclick", changeZ);
+document.getElementById("h1").addEventListener("click", t1);
+document.getElementById("h2").addEventListener("click", t2);
+document.getElementById("h3").addEventListener("click", t3);
+document.getElementById("h4").addEventListener("click", t4);
+
 
 function changeZ()
 {
@@ -133,7 +138,6 @@ function slideShow()
 }
 
 window.onload=slideShow;
-
 
 
 
