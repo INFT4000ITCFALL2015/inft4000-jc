@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="scripts.js" type="text/javascript"></script>
+    <title></title>
+</head>
+<body>
+<form id="Form" name="Form" method="post">
+    <p id = p1>
+        <label>First Name: <input type="text" name="firstName" id="firstName"/></label>
+    </p>
+
+    <p>
+        <label>Last Name: <input type="text" name="lastName" id="lastName"/></label>
+    </p>
+
+    <p>
+        <label>Student Id: <input type="text" name="studentId" id="studentId"/> </label>
+    </p>
+
+    <p>
+        <input type="button" name="submit" id= "submit" value="Submit" onclick="addStudent(firstName.value, lastName.value, studentId.value)"/>
+    </p>
+</form>
+
+<div id="listDiv">
+    <ul id="list">
+
+
+    </ul>
+</div>
+
+</body>
+</html>
