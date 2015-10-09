@@ -46,10 +46,9 @@ document.getElementById("submit").addEventListener("click",function(){
         addStudent();
     }else{
         var found = false;
-        var idFromArray = 0;
         for(var x = 0; x < students.length; x++){
-            var idFromForm = document.getElementById("studentId");
-            idFromArray = students[x].studentId;
+            var idFromForm = document.getElementById("studentId").value;
+            var idFromArray = students[x].studentId;
             if(idFromArray == idFromForm){
                 alert("This Id Is Taken");
                 found = true;
@@ -61,3 +60,16 @@ document.getElementById("submit").addEventListener("click",function(){
         }
     }
 });
+
+document.getElementById("target").addEventListener("mouseover",function(){
+        document.getElementById("newDiv").style.visibility = "visible";
+        for(var x = 0; x < students.length; x++) {
+            document.getElementById("newDiv").innerHTML = JSON.stringify(students)
+
+        }
+});
+
+document.getElementById("newDiv").addEventListener("click", function(){
+        document.getElementById("newDiv").style.visibility = "hidden";
+    }
+);
