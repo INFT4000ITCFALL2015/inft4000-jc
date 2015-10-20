@@ -32,7 +32,6 @@
 
 .subTable td {
     font-size: 20px;
-    color: black; 
     width: 40px; 
     height: 40px; 
     text-align: center;
@@ -42,9 +41,19 @@
 
 .goldBox td {
     background-image: url("gold.jpg");
-    background-position: 50% 50%; 
+    background-position: 50% 50%;
+    z-index: -1;
 }
 .greenBox td {
     background-image: url("green.jpg");
-    background-position: 50% 50%; 
+    background-position: 50% 50%;
+    z-index: -1;
+}
+
+.empty{
+    color: green;
+}
+
+.fill{
+    color: blue;
 }
