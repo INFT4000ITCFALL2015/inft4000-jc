@@ -19,15 +19,6 @@ window.addEventListener("load", function() {
             }
         })
     }
-
-    var rowA = document.getElementsByClassName("A");
-    for (var j = 0; j < empties.length; j++) {
-        empties[i].addEventListener('blur', function () {
-           for(var x =0; x < rowA.length; x++){
-
-           }
-        })
-    }
 });
 
 function clear(){
