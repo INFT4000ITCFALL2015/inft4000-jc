@@ -2,19 +2,31 @@
  * Created by inet2005 on 10/20/15.
  */
 
-document.getElementById("reset").addEventListener("click", clear);
-document.getElementById("fillTable").addEventListener("click", fill);
+window.addEventListener("load", function() {
 
-var empties = document.getElementsByClassName("empty");
-for (var i = 0; i < empties.length; i++){
-    empties[i].addEventListener('keyup', function(){
-        //if
-            alert("Please enter a digit that is between 1 and 9");
+    document.getElementById("reset").addEventListener("click", clear);
+    document.getElementById("fillTable").addEventListener("click", fill);
 
+    var empties = document.getElementsByClassName("empty");
+    for (var i = 0; i < empties.length; i++) {
+        empties[i].addEventListener('keyup', function () {
+            var numReg = /^[1-9]$/;
+            if (numReg.exec(this.textContent) == null) {
+                alert("Please Enter a Number Between 1 and 9");
+                this.textContent = "";
+            }
+        })
+    }
 
+    var rowA = document.getElementsByClassName("A");
+    for (var j = 0; j < empties.length; j++) {
+        empties[i].addEventListener('blur', function () {
+           for(var x =0; x < rowA.length; x++){
 
-    })
-}
+           }
+        })
+    }
+});
 
 function clear(){
     location.reload();
@@ -90,6 +102,5 @@ function fill(){
     document.getElementById("I5").innerHTML = "5";
     document.getElementById("I8").innerHTML = "9";
     document.getElementById("I9").innerHTML = "4";
-
 
 }
