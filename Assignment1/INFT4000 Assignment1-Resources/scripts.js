@@ -2,6 +2,8 @@
  * Created by inet2005 on 10/20/15.
  */
 
+"use strict";
+
 window.addEventListener("load", function() {
 
     document.getElementById("reset").addEventListener("click", clear);
