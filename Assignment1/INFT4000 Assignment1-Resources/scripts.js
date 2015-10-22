@@ -18,18 +18,23 @@ window.addEventListener("load", function() {
                 checkRow(this.id, this.textContent);
                 checkCol(this.id, this.textContent);
                 checkBox(this.id, this.textContent);
+                fillCheck();
             }else{
                 alert("Please enter a number between 1 and 9");
                 this.textContent = "";
             }
+
+
         })
     }
 });
 
 function digitVal(element){
     var numReg = /^[1-9]$/;
-    if(numReg.exec(element) == null) {
-       return false;
+    if(element != "") {
+        if (numReg.exec(element) == null) {
+            return false;
+        }
     }
 }
 
@@ -96,6 +101,19 @@ function checkBox(element1, element2){
     if(counter == 2){
         alert("Duplicate in Box");
         document.getElementById(element1).style.color = 'red';
+    }
+}
+
+function fillCheck(){
+    var filledTd = document.getElementsByTagName("td");
+    var fullCounter = 0;
+    for(var i = 0; i<filledTd.length; i++){
+        if(filledTd[i].textContent != "" && filledTd[i].style.color != 'red'){
+            fullCounter += 1;
+        }
+    }
+    if(fullCounter == 90){
+        alert("You Did It");
     }
 }
 
@@ -175,3 +193,4 @@ function fill(){
     document.getElementById("I9").innerHTML = "4";
 
 }
+
