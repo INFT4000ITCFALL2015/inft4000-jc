@@ -9,17 +9,76 @@ window.addEventListener("load", function() {
     document.getElementById("reset").addEventListener("click", clear);
     document.getElementById("fillTable").addEventListener("click", fill);
 
+
     var empties = document.getElementsByClassName("empty");
     for (var i = 0; i < empties.length; i++) {
         empties[i].addEventListener('keyup', function () {
-            var numReg = /^[1-9]$/;
-            if (numReg.exec(this.textContent) == null) {
-                alert("Please Enter a Number Between 1 and 9");
+            if(digitVal(this.textContent) != false){
+                document.getElementById(this.id).style.color ='green';
+                checkRow(this.id, this.textContent);
+                checkCol(this.id, this.textContent);
+            }else{
+                alert("Please enter a number between 1 and 9");
                 this.textContent = "";
             }
         })
     }
 });
+
+function digitVal(element){
+    var numReg = /^[1-9]$/;
+    if(numReg.exec(element) == null) {
+       return false;
+    }
+}
+
+function checkRow(element1, element2){
+    var rowArray = [];
+    var num = document.getElementById(element1);
+    var checkRows = num.className.split(' ')[1];
+    var rows = document.getElementsByClassName(checkRows);
+    for(var i = 0; i < rows.length; i++){
+        rowArray.push(rows[i].textContent);
+    }
+
+    var counter= 0;
+    for(i = 0; i < rowArray.length; i++){
+        if(rowArray[i] == element2){
+            counter += 1 ;
+        }
+    }
+
+    if(counter == 2){
+        alert("this number is already in this row");
+        document.getElementById(element1).style.color = 'red';
+    }
+
+
+}
+
+function checkCol(element1, element2){
+    var colArray = [];
+    var num = document.getElementById(element1);
+    var checkCol = num.className.split(' ')[2];
+    var cols = document.getElementsByClassName(checkCol);
+    for(var i = 0; i < cols.length; i++){
+        colArray.push(cols[i].textContent);
+    }
+
+    var counter= 0;
+    for(i = 0; i < colArray.length; i++){
+        if(colArray[i] == element2){
+            counter += 1 ;
+        }
+    }
+
+    if(counter == 2){
+        alert("this number is already in this column");
+        document.getElementById(element1).style.color = 'red';
+    }
+
+
+}
 
 function clear(){
     location.reload();
