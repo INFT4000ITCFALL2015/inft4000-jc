@@ -17,6 +17,7 @@ window.addEventListener("load", function() {
                 document.getElementById(this.id).style.color ='green';
                 checkRow(this.id, this.textContent);
                 checkCol(this.id, this.textContent);
+                checkBox(this.id, this.textContent);
             }else{
                 alert("Please enter a number between 1 and 9");
                 this.textContent = "";
@@ -49,11 +50,9 @@ function checkRow(element1, element2){
     }
 
     if(counter == 2){
-        alert("this number is already in this row");
+        alert("Duplicate in Row");
         document.getElementById(element1).style.color = 'red';
     }
-
-
 }
 
 function checkCol(element1, element2){
@@ -73,11 +72,31 @@ function checkCol(element1, element2){
     }
 
     if(counter == 2){
-        alert("this number is already in this column");
+        alert("Duplicate in Column");
         document.getElementById(element1).style.color = 'red';
     }
+}
 
+function checkBox(element1, element2){
+    var boxArray = [];
+    var num = document.getElementById(element1);
+    var checkBox = num.className.split(' ')[3];
+    var boxes = document.getElementsByClassName(checkBox);
+    for(var i = 0; i < boxes.length; i++){
+        boxArray.push(boxes[i].textContent);
+    }
 
+    var counter= 0;
+    for(i = 0; i < boxArray.length; i++){
+        if(boxArray[i] == element2){
+            counter += 1 ;
+        }
+    }
+
+    if(counter == 2){
+        alert("Duplicate in Box");
+        document.getElementById(element1).style.color = 'red';
+    }
 }
 
 function clear(){
