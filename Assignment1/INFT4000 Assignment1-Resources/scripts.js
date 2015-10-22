@@ -9,6 +9,7 @@ window.addEventListener("load", function() {
     document.getElementById("reset").addEventListener("click", clear);
     document.getElementById("fillTable").addEventListener("click", fill);
 
+    var message = {message: "You Have Won"};
 
     var empties = document.getElementsByClassName("empty");
     for (var i = 0; i < empties.length; i++) {
@@ -18,13 +19,13 @@ window.addEventListener("load", function() {
                 checkRow(this.id, this.textContent);
                 checkCol(this.id, this.textContent);
                 checkBox(this.id, this.textContent);
-                fillCheck();
+                if(fillCheck()==true){
+                    alert(message.message);
+                }
             }else{
                 alert("Please enter a number between 1 and 9");
                 this.textContent = "";
             }
-
-
         })
     }
 });
@@ -113,7 +114,7 @@ function fillCheck(){
         }
     }
     if(fullCounter == 90){
-        alert("You Did It");
+        return true;
     }
 }
 
@@ -191,6 +192,10 @@ function fill(){
     document.getElementById("I5").innerHTML = "5";
     document.getElementById("I8").innerHTML = "9";
     document.getElementById("I9").innerHTML = "4";
+
+    if(fillCheck() == true){
+        alert("You Have Won")
+    }
 
 }
 
