@@ -5,12 +5,14 @@
 "use strict";
 
 window.addEventListener("load", function() {
-
+    //Unobtrusive event Listeners for the Buttons
     document.getElementById("reset").addEventListener("click", clear);
     document.getElementById("fillTable").addEventListener("click", fill);
 
+    //Message Object
     var message = {message: "You Have Won"};
 
+    //Implementation of event Listener
     var empties = document.getElementsByClassName("empty");
     for (var i = 0; i < empties.length; i++) {
         empties[i].addEventListener('keyup', function () {
@@ -30,6 +32,7 @@ window.addEventListener("load", function() {
     }
 });
 
+//Checks value against regex to validate
 function digitVal(element){
     var numReg = /^[1-9]$/;
     if(element != "") {
@@ -39,6 +42,7 @@ function digitVal(element){
     }
 }
 
+//Checks row for any duplicate values to validate
 function checkRow(element1, element2){
     var rowArray = [];
     var num = document.getElementById(element1);
@@ -61,6 +65,7 @@ function checkRow(element1, element2){
     }
 }
 
+//Checks columns for any duplicate values to validate
 function checkCol(element1, element2){
     var colArray = [];
     var num = document.getElementById(element1);
@@ -83,6 +88,7 @@ function checkCol(element1, element2){
     }
 }
 
+//Checks boxes for any duplicate values to validate
 function checkBox(element1, element2){
     var boxArray = [];
     var num = document.getElementById(element1);
@@ -105,6 +111,7 @@ function checkBox(element1, element2){
     }
 }
 
+//Counts all td's that are full and not red to validate completion
 function fillCheck(){
     var filledTd = document.getElementsByTagName("td");
     var fullCounter = 0;
@@ -118,10 +125,12 @@ function fillCheck(){
     }
 }
 
+//reset function
 function clear(){
     location.reload();
 }
 
+//fills in correct table
 function fill(){
 
     // fill A Row
