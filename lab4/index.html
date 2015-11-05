@@ -26,14 +26,14 @@
     </p>
 </form>
 
-<div id="target">
-        <ul>
-            <li data-ng-repeat="student in students">{{student.fName}}&nbsp{{student.lName}}&nbsp{{student.stuId}} </li>
-        </ul>
-</div>
 
-<div id="newDiv">
+<ul>
+    <li data-ng-mouseover="showDiv()" data-ng-mouseout="hideDiv()" data-ng-repeat="student in students">{{student.fName}}&nbsp{{student.lName}}&nbsp{{student.stuId}} </li>
+</ul>
 
+<div id="newDiv" data-ng-show="toShow">
+
+    <p>{{students}}</p>
 
 </div>
 

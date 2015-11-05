@@ -12,26 +12,32 @@ angular.module('studentsApp',[])
         };
 
         $scope.addNewStudent = function(){
+
             if($scope.students.length == 0) {
                 $scope.newStudent();
             }else{
                 var found = false;
-                for(var x = 0; x < $scope.students.length; x++){
-                    var idFromForm = $scope.studentId;
-                    var idFromArray = $scope.students.stuId;
-                    if(idFromArray == idFromForm){
-                        alert("This Id Is Taken");
-                        found = true;
-                        break;
-                    }
-                }
-                if (found == false){
+                angular.forEach($scope.students,function(student){
+                        if (student.stuId == $scope.studentId) {
+                            alert("Id has been taken");
+                            found = true;
+                        }
+                });
+                if(!found){
                     $scope.newStudent();
                 }
             }
-        }; // end of add new student function
+        };
+
+        $scope.showDiv = function(){
+            $scope.toShow = true;
+        }
+
+        $scope.hideDiv = function(){
+            $scope.toShow = false;
+        }
 
 
-    }) // end of controller code
+    })
 
-; // end of the module
+;
