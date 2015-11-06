@@ -31,7 +31,7 @@ angular.module('studentsApp',[])
 
         $scope.showDiv = function(){
             $scope.toShow = true;
-        }
+        };
 
         $scope.hideDiv = function(){
             $scope.toShow = false;
