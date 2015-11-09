@@ -1,0 +1,17 @@
+[
+  {
+  "fName": "Joe",
+  "lName": "Blow",
+  "stuId": "123"
+},
+  {
+  "fName":"Jane",
+  "lName":"Doe",
+  "stuId":"124"
+},
+  {
+    "fName":"Justin",
+    "lName":"Cooke",
+    "stuId":"125"
+}
+]
