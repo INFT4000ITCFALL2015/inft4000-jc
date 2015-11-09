@@ -55,11 +55,11 @@ angular.module('studentsApp',[])
         };
 
         //Removing a student from the Array
-        $scope.removeRow = function(name){
+        $scope.removeRow = function(id){
             var index = -1;
             var stuArr = eval( $scope.students );
             for( var i = 0; i < stuArr.length; i++ ) {
-                if( stuArr[i].name === name ) {
+                if( stuArr[i].stuId === id ) {
                     index = i;
                     break;
                 }
