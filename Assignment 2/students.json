@@ -13,5 +13,30 @@
     "fName":"Justin",
     "lName":"Cooke",
     "stuId":"125"
-}
+},
+  {
+    "fName":"Jim",
+    "lName":"Bean",
+    "stuId":"126"
+  },
+  {
+    "fName":"Kate",
+    "lName":"Ginn",
+    "stuId":"127"
+  },
+  {
+    "fName":"Kerri",
+    "lName":"Lee",
+    "stuId":"128"
+  },
+  {
+    "fName":"Matt",
+    "lName":"Dee",
+    "stuId":"129"
+  },
+  {
+    "fName":"Dustin",
+    "lName":"Peters",
+    "stuId":"130"
+  }
 ]
