@@ -1,13 +1,15 @@
 angular.module('studentsApp',[])
     .controller('studentController',['$scope', '$http',function($scope, $http) {
 
-        $scope.students = []; // end of students array
+        //Declare Student Array
+        $scope.students = [];
 
+        //Get Students from JSON file
         $http.get('students.json').success(function (data) {
             $scope.students = data;
         });
 
-
+        //Adding a new student to array
         $scope.newStudent = function () {
 
             $scope.students.push({fName: $scope.firstName, lName: $scope.lastName, stuId: $scope.studentId});
@@ -16,6 +18,7 @@ angular.module('studentsApp',[])
             $scope.studentId = '';
         };
 
+        //Function that determines if student ID has been taken, if not student is added
         $scope.addNewStudent = function () {
 
             if ($scope.students.length == 0) {
@@ -34,6 +37,7 @@ angular.module('studentsApp',[])
             }
         };
 
+        //JSON view functions
         $scope.showDiv = function () {
             $scope.toShow = true;
         };
@@ -42,6 +46,7 @@ angular.module('studentsApp',[])
             $scope.toShow = false;
         };
 
+        //Order By Set Up
         $scope.predicate = 'stuId';
         $scope.reverse = true;
         $scope.order = function(predicate) {
@@ -49,6 +54,7 @@ angular.module('studentsApp',[])
             $scope.predicate = predicate;
         };
 
+        //Removing a student from the Array
         $scope.removeRow = function(name){
             var index = -1;
             var stuArr = eval( $scope.students );

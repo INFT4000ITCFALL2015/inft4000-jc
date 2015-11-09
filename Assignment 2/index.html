@@ -10,9 +10,10 @@
     <title>Students App</title>
 </head>
 
-<body data-ng-controller="studentController">
+<body data-ng-controller="studentController"> <!--Declare the controller for the app -->
 <form role="form" class="form-inline" id="Form" name="Form" method="post" data-ng-submit="addNewStudent()">
 
+    <!-- New Student Form -->
     <div class="form-group">
         <label>First Name: <input class="form-control" type="text" id="firstName" data-ng-model="firstName"/></label>
         <label>Last Name: <input class="form-control" type="text" id="lastName" data-ng-model="lastName"/></label>
@@ -21,6 +22,7 @@
     </div>
 </form>
 
+<!-- Display Table -->
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -48,6 +50,7 @@
     </tbody>
 </table>
 
+<!-- JSON ARRAY -->
 <div id="newDiv" data-ng-show="toShow">
 
     <p>{{students}}</p>
