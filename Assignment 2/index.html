@@ -11,22 +11,14 @@
 </head>
 
 <body data-ng-controller="studentController">
-<form id="Form" name="Form" method="post" data-ng-submit="addNewStudent()">
-    <p id = p1>
-        <label>First Name: <input type="text" id="firstName" data-ng-model="firstName"/></label>
-    </p>
+<form role="form" class="form-inline" id="Form" name="Form" method="post" data-ng-submit="addNewStudent()">
 
-    <p>
-        <label>Last Name: <input type="text" id="lastName" data-ng-model="lastName"/></label>
-    </p>
-
-    <p>
-        <label>Student Id: <input type="text"  id="studentId" data-ng-model="studentId"/> </label>
-    </p>
-
-    <p>
-        <input type="submit" id="submit" value="Submit"/>
-    </p>
+    <div class="form-group">
+        <label>First Name: <input class="form-control" type="text" id="firstName" data-ng-model="firstName"/></label>
+        <label>Last Name: <input class="form-control" type="text" id="lastName" data-ng-model="lastName"/></label>
+        <label>Student Id: <input class="form-control" type="text"  id="studentId" data-ng-model="studentId"/> </label>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
 </form>
 
 <table class="table table-bordered table-striped">
