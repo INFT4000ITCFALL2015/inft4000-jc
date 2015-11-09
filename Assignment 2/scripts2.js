@@ -41,4 +41,11 @@ angular.module('studentsApp',[])
         $scope.hideDiv = function () {
             $scope.toShow = false;
         };
+
+        $scope.predicate = 'stuId';
+        $scope.reverse = true;
+        $scope.order = function(predicate) {
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+            $scope.predicate = predicate;
+        };
     }]);
