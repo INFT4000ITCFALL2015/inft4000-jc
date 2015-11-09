@@ -48,4 +48,16 @@ angular.module('studentsApp',[])
             $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
             $scope.predicate = predicate;
         };
+
+        $scope.removeRow = function(name){
+            var index = -1;
+            var stuArr = eval( $scope.students );
+            for( var i = 0; i < stuArr.length; i++ ) {
+                if( stuArr[i].name === name ) {
+                    index = i;
+                    break;
+                }
+            }
+            $scope.students.splice( index, 1 );
+        };
     }]);
