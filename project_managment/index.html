@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="masterMindApp">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="sripts.js" type="text/javascript"></script>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <title>MasterMind App</title>
+</head>
+
+<body data-ng-controller="gameController"> <!--Declare the controller for the app -->
+<form role="form" class="form-inline" id="Form" name="Form" method="post" data-ng-submit="newColourSet()">
+
+    <!-- Game Form -->
+    <div class="form-group">
+        <div class="select">
+        <label>1st Colour: <select class="form-control" name="colourOne" id="colourOne" data-ng-model="colOne" required>
+            <option value="">Pick Colour</option>
+            <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+        </select></label>
+
+        <label>2nd Colour: <select class="form-control" name="colourTwo" id="colourTwo" data-ng-model="colTwo" required>
+            <option value="">Pick Colour</option>
+            <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+        </select></label>
+
+        <label>3rd Colour: <select class="form-control" name="colourThree" id="colourThree" data-ng-model="colThree" required>
+            <option value="">Pick Colour</option>
+            <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+        </select></label>
+
+        <label>4th Colour: <select class="form-control"  name="colourFour" id="colourFour" data-ng-model="colFour" required>
+            <option value="">Pick Colour</option>
+            <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+        </select></label>
+        </div>
+        <br>
+        <input ng-style="{'background-color':colOne}" class="form-control" type="text" id="colOne"  ng-model="colOne" readonly/>
+        <input ng-style="{'background-color':colTwo}" class="form-control" type="text" id="colTwo"  ng-model="colTwo" readonly/>
+        <input ng-style="{'background-color':colThree}" class="form-control" type="text" id="colThree" ng-model="colThree" readonly/>
+        <input ng-style="{'background-color':colFour}" class="form-control" type="text" id="colFour"  ng-model="colFour" readonly/>
+
+        <button type="submit" class="btn btn-default">Check</button>
+    </div>
+</form>
+
+<!-- Display Table -->
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>1st Colour</th>
+        <th>2nd Colour</th>
+        <th>3rd Colour</th>
+        <th>4th Colour</th>
+        <th>Results</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-ng-repeat="colourSet in colourSets">
+        <td  ng-style="{'background-color':colourSet.colourOne}">{{colourSet.colourOne}}</td>
+        <td  ng-style="{'background-color':colourSet.colourTwo}">{{colourSet.colourTwo}}</td>
+        <td  ng-style="{'background-color':colourSet.colourThree}">{{colourSet.colourThree}}</td>
+        <td  ng-style="{'background-color':colourSet.colourFour}">{{colourSet.colourFour}}</td>
+        <td></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>
