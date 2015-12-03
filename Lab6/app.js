@@ -22,7 +22,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+var mysql = require('mysql'), // node-mysql module
+    myConnection = require('express-myconnection'), // express-myconnection module
+    dbOptions = {
+      host: 'localhost',
+      user: 'root',
+      password: 'inet2005',
+      port: 3306,
+      database: 'employees'
+    };
+
+app.use(myConnection(mysql, dbOptions, 'single'));
+
+app.use('/api', routes);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
