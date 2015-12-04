@@ -5,29 +5,84 @@
     <title>Employees Client</title>
     <link href = "bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
     <script src = "bower_components/angular/angular.min.js"></script>
+    <script src = "bower_components/angular-resource/angular-resource.min.js"></script>
     <script src = "scripts.js"></script>
+    <style type="text/css">
+        #employeeReport{
+            position: fixed;
+            top: 200px;
+            left: 200px;
+            width: 400px;
+            background-color: moccasin;
+        }
+    </style>
 </head>
 <body ng-controller="employeeController">
-<table class="table table-bordered">
-    <thead>
-    <th>Employee ID</th>
-    <th>Birth Date</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Gender</th>
-    <th>Hire Date</th>
-    </thead>
-    <tbody>
-    <tr ng-repeat="employee in employees">
-        <td>{{employee.emp_no}}</td>
-        <td>{{employee.birth_date}}</td>
-        <td>{{employee.first_name}}</td>
-        <td>{{employee.last_name}}</td>
-        <td>{{employee.gender}}</td>
-        <td>{{employee.hire_date}}</td>
-    </tr>
-    </tbody>
-</table>
+    <h2 class="bg-success">Last Operation Status: {{message}}</h2>
+    <div id = "employeeReport" ng-show="displayReport" ng-click="hideReport()">
+        <p>Employee ID: {{selectedEmployee.emp_no}}</p>
+        <p>Birth Date: {{selectedEmployee.birth_date}}</p>
+        <p>First Name: {{selectedEmployee.first_name}}</p>
+        <p>Last Name: {{selectedEmployee.last_name}}</p>
+        <p>Gender: {{selectedEmployee.gender}}</p>
+        <p>Hire Date: {{selectedEmployee.hire_date}}</p>
+    </div>
+
+    <form ng-submit="addEmployee()">
+        <div class="form-group">
+            <label for="empNo">Employee ID</label>
+            <input type="text" class="form-control" id="empNo" placeholder="Employee ID" ng-model="newEmpNo">
+        </div>
+        <div class="form-group">
+            <label for="bDate">Birth Date</label>
+            <input type="text" class="form-control" id="bDate" placeholder="Birth Date (YYYY-MM-DD)" ng-model="newBirthDate">
+        </div>
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="newFirstName">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Last Name" ng-model="newLastName">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" id="gender" placeholder="Gender" ng-model="newGender">
+        </div>
+        <div class="form-group">
+            <label for="hDate">Last Name</label>
+            <input type="text" class="form-control" id="hDate" placeholder="Hire Date (YYYY-MM-DD)" ng-model="newHireDate">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <hr />
+    <button class="btn btn-default" ng-click="refreshEmployees()">Refresh Table</button>
+    <table class="table table-bordered">
+        <thead>
+            <th>Employee ID</th>
+            <th>Birth Date</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Hire Date</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="employee in employees">
+            <td>{{employee.emp_no}}</td>
+            <td contenteditable="true" id="updateEmployeeBDate{{employee.emp_no}}">{{employee.birth_date}}</td>
+            <td contenteditable="true" id="updateEmployeeFName{{employee.emp_no}}">{{employee.first_name}}</td>
+            <td contenteditable="true" id="updateEmployeeLName{{employee.emp_no}}">{{employee.last_name}}</td>
+            <td contenteditable="true" id="updateEmployeeGender{{employee.emp_no}}">{{employee.gender}}</td>
+            <td contenteditable="true" id="updateEmployeeHDate{{employee.emp_no}}">{{employee.hire_date}}</td>
+            <td><img src="images/info.png" ng-click="showEmployee(employee.emp_no)"/></td>
+            <td><img src="images/save.png" ng-click="updateEmployee(employee.emp_no)"/></td>
+            <td><img src="images/erase.png" ng-click="deleteEmployee(employee.emp_no)"/></td>
+        </tr>
+        </tbody>
+    </table>
 
 </body>
 </html>
