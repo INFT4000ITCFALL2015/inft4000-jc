@@ -34,6 +34,10 @@ var mysql = require('mysql'), // node-mysql module
 
 app.use(myConnection(mysql, dbOptions, 'single'));
 
+app.disable('etag');
+
+
+
 app.use('/api', routes);
 app.use('/users', users);
 
