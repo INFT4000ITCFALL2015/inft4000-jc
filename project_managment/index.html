@@ -11,7 +11,7 @@
 </head>
 
 <body data-ng-controller="gameController"> <!--Declare the controller for the app -->
-<form role="form" class="form-inline" id="Form" name="Form" method="post" data-ng-submit="newColourSet()">
+<form role="form" class="form-inline" id="Form" name="Form" method="post" data-ng-submit="newColourSet()" data-ng-init="getAnswerSet()">
 
     <!-- Game Form -->
     <div class="form-group">
@@ -54,7 +54,8 @@
         <th>2nd Colour</th>
         <th>3rd Colour</th>
         <th>4th Colour</th>
-        <th>Results</th>
+        <th>Correct Colours</th>
+        <th>Correct Positions</th>
     </tr>
     </thead>
     <tbody>
@@ -63,7 +64,8 @@
         <td  ng-style="{'background-color':colourSet.colourTwo}">{{colourSet.colourTwo}}</td>
         <td  ng-style="{'background-color':colourSet.colourThree}">{{colourSet.colourThree}}</td>
         <td  ng-style="{'background-color':colourSet.colourFour}">{{colourSet.colourFour}}</td>
-        <td></td>
+        <td>{{colourSet.matchedColours}}</td>
+        <td>{{colourSet.matchedPosition}}</td>
     </tr>
     </tbody>
 </table>
