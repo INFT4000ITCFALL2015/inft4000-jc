@@ -8,17 +8,28 @@ mongoose.connect('mongodb://localhost/test/restaurants'); // connect to our data
 var Restaurant = require('../models/Restaurant');
 
 
-module.exports.store = function(req, res) {
+//module.exports.store = function(req, res) {
+//
+//    console.log("In controller store method...");
+//
+//    var restaurant = new Restaurant();      // create a new instance of the Bear model
+//    restaurant.name = req.body.name;  // set the bears name (comes from the request)
+//
+//    // save the bear and check for errors
+//    restaurant.save(function(err) {
+//        if (err)
+//            res.send(err);
+//
+//        res.json({ message: 'Restaurant created!' });
+//    });
+//
+//};
 
-    var restaurant = new Restaurant();      // create a new instance of the Bear model
-    restaurant.name = req.body.name;  // set the bears name (comes from the request)
-
-    // save the bear and check for errors
-    restaurant.save(function(err) {
+module.exports.index = function(req, res) {
+    Restaurant.find(function(err, bears) {
         if (err)
             res.send(err);
 
-        res.json({ message: 'Restaurant created!' });
+        res.json(bears);
     });
-
 };

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var restaurantController = require('../controllers/restaurantController');
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -19,7 +20,11 @@ router.get('/', function(req, res) {
 // ----------------------------------------------------
 router.route('/restaurant')
 
-  // create a bear (accessed at POST http://localhost:8080/api/bears)
-    .post();
+    // create a bear (accessed at POST http://localhost:8080/api/bears)
+    //.post(restaurantController.store());
+
+    // get all the bears (accessed at GET http://localhost:8080/api/bears)
+    .get(restaurantController.index());
+
 
 module.exports = router;
