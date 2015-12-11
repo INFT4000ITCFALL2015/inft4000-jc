@@ -1,0 +1,26 @@
+{
+  "name": "RestaurantsClient",
+  "version": "0.0.0",
+  "homepage": "https://github.com/INFT4000ITCFALL2015/inft4000-jc",
+  "authors": [
+    "jrcooke2 <jrcooke2@gmail.com>"
+  ],
+  "description": "Assignment 3 Client",
+  "main": "index.html",
+  "keywords": [
+    "API"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-resource": "~1.4.8",
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
+}

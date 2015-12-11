@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Ass3 Restaurant</title>
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="scripts.js"></script>
+    <style type="text/css">
+        #restaurantReport {
+            position: fixed;
+            top: 200px;
+            left: 200px;
+            width: 400px;
+            background-color: moccasin;
+        }
+    </style>
+</head>
+<body ng-controller="restaurantController">
+<h1 class="bg-success">Last Operation Status: {{message}}</h1>
+<div id="restaurantReport" ng-show="displayReport" ng-click="hideReport()">
+    <p>Borough: {{selectedRestaurant.borough}}</p>
+    <p>Cuisine: {{selectedRestaurant.cuisine}}</p>
+    <p>Name: {{selectedRestaurant.name}}</p>
+    <p>Restaurant ID: {{selectedRestaurant.restaurant_id}}</p>
+</div>
+
+<h3>Enter a borough, cuisine, name, and restaurant ID to insert.</h3>
+<form ng-submit="addRestaurant()">
+    <div class="form-group">
+        <label for="borough">Borough</label>
+        <input type="text" class="form-control" id="borough" placeholder="Borough" ng-model="newBorough">
+
+        <label for="cuisine">Cuisine</label>
+        <input type="text" class="form-control" id="cuisine" placeholder="Cuisine" ng-model="newCuisine">
+
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newName">
+
+        <label for="restaurantID">Restaurant ID</label>
+        <input type="text" class="form-control" id="restaurantID" placeholder="Restaurant ID" ng-model="newRestaurantID">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<hr />
+<button ng-click="refreshRestaurants()">Refresh Table</button>
+<table class="table table-bordered">
+    <thead>
+    <th>Borough</th>
+    <th>Cuisine</th>
+    <th>Name</th>
+    <th>Restaurant ID</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="restaurant in restaurants">
+        <td contenteditable="true" id="updateRestaurantBorough{{restaurant.restaurant_id}}">{{restaurant.borough}}</td>
+        <td contenteditable="true" id="updateRestaurantCuisine{{restaurant.restaurant_id}}">{{restaurant.cuisine}}</td>
+        <td contenteditable="true" id="updateRestaurantName{{restaurant.restaurant_id}}">{{restaurant.name}}</td>
+        <td contenteditable="true" id="updateRestaurantID{{restaurant.restaurant_id}}">{{restaurant.restaurant_id}}</td>
+
+        <td><img src="images/info.png" ng-click="showRestaurant(restaurant.restaurant_id)"/></td>
+        <td><img src="images/save.png" ng-click="updateRestaurant(restaurant.restaurant_id)"/></td>
+        <td><img src="images/erase.png" ng-click="deleteRestaurant(restaurant.restaurant_id)"/></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
