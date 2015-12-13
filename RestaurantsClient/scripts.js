@@ -1,18 +1,16 @@
 /**
  * Created by inet2005 on 12/11/15.
  */
-/**
- * Created by inet2005 on 11/26/15.
- * in AngularAPIClient
- */
 
 (function(){
 
     var app = angular.module('myApp',['ngResource']);
 
     app.factory("Restaurant", function($resource) {
-        return $resource("http://localhost:3000/api/restaurants/:_id",null,{
-            'update': { method:'PUT' }
+        return $resource(
+            "http://localhost:3000/api/restaurants/:_id",
+            null,
+            {'update': { method:'PUT'}, 'query':  {method:'GET', isArray:true}
         });
     });
 
@@ -65,7 +63,13 @@
                 borough:       $scope.newBorough,
                 cuisine:       $scope.newCuisine,
                 name:          $scope.newName,
-                restaurant_id: $scope.newRestaurantID
+                restaurant_id: $scope.newRestaurantID,
+                date:          $scope.newDate,
+                grade:         $scope.newGrade,
+                score:         $scope.newScore,
+                building:      $scope.newBuilding,
+                street:        $scope.newStreet,
+                zipcode:       $scope.newZipCode
             };
 
             $scope.message = Restaurant.save(data);
@@ -77,7 +81,7 @@
 
             console.log("In Angular deleteRestaurant method ..."); //used to see where we are
 
-            $scope.message = Restaurant.delete({ restaurant_id: restaurantId });
+            $scope.message = Restaurant.delete({ _id: restaurantId });
         };//end of deleteRestaurant()
 
         //*****************************************************************
@@ -87,20 +91,18 @@
             console.log("In Angular updateRestaurant method ..."); //used to see where we are
 
             var upBorough      = document.getElementById('updateRestaurantBorough' + restaurantId).innerHTML;
-            var upCuisine      = document.getElementById('updateRestaurantLName' + restaurantId).innerHTML;
-            var upName         = document.getElementById('updateRestaurantBorough' + restaurantId).innerHTML;
-            var upRestaurantID = document.getElementById('updateRestaurantLName' + restaurantId).innerHTML;
+            var upCuisine      = document.getElementById('updateRestaurantCuisine' + restaurantId).innerHTML;
+            var upName         = document.getElementById('updateRestaurantName' + restaurantId).innerHTML;
 
             var restaurant = Restaurant.query({restaurant_id: restaurantId},function(data) {
 
                 var data = {
                     borough       : upBorough,
                     cuisine       : upCuisine,
-                    name          : upName,
-                    restaurant_id : upRestaurantID
+                    name          : upName
                 };
 
-                $scope.message = Restaurant.update({restaurant_id: restaurantId},data);
+                $scope.message = Restaurant.update({_id: restaurantId},data);
             });
         };//end of updateRestaurant()
 

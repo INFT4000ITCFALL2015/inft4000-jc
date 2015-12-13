@@ -29,17 +29,43 @@
 <h3>Enter a borough, cuisine, name, and restaurant ID to insert.</h3>
 <form ng-submit="addRestaurant()">
     <div class="form-group">
-        <label for="borough">Borough</label>
-        <input type="text" class="form-control" id="borough" placeholder="Borough" ng-model="newBorough">
 
-        <label for="cuisine">Cuisine</label>
-        <input type="text" class="form-control" id="cuisine" placeholder="Cuisine" ng-model="newCuisine">
+        <h3>About:</h3>
+
+        <label for="restaurantID">Restaurant ID</label>
+        <input type="text" class="form-control" id="restaurantID" placeholder="Restaurant ID" ng-model="newRestaurantID">
 
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newName">
 
-        <label for="restaurantID">Restaurant ID</label>
-        <input type="text" class="form-control" id="restaurantID" placeholder="Restaurant ID" ng-model="newRestaurantID">
+        <label for="cuisine">Cuisine</label>
+        <input type="text" class="form-control" id="cuisine" placeholder="Cuisine" ng-model="newCuisine">
+
+        <label for="borough">Borough</label>
+        <input type="text" class="form-control" id="borough" placeholder="Borough" ng-model="newBorough">
+
+        <h3>Address:</h3>
+
+        <label for="building">Building</label>
+        <input type="text" class="form-control" id="building" placeholder="Building #" ng-model="newBuilding">
+
+        <label for="street">Street</label>
+        <input type="text" class="form-control" id="street" placeholder="Street" ng-model="newStreet">
+
+        <label for="zipcode">Zipcode</label>
+        <input type="text" class="form-control" id="zipcode" placeholder="Zipcode" ng-model="newZipCode">
+
+        <h3>Grade:</h3>
+
+        <label for="date">Date</label>
+        <input type="date" class="form-control" id="date" placeholder="Date" ng-model="newDate">
+
+        <label for="grade">Grade</label>
+        <input type="text" class="form-control" id="grade" placeholder="Letter Grade" ng-model="newGrade">
+
+        <label for="score">Score</label>
+        <input type="text" class="form-control" id="score" placeholder="Score (1-10)" ng-model="newScore">
+
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
@@ -47,24 +73,24 @@
 <button ng-click="refreshRestaurants()">Refresh Table</button>
 <table class="table table-bordered">
     <thead>
-    <th>Borough</th>
-    <th>Cuisine</th>
-    <th>Name</th>
     <th>Restaurant ID</th>
+    <th>Name</th>
+    <th>Cuisine</th>
+    <th>Borough</th>
     <th></th>
     <th></th>
     <th></th>
     </thead>
     <tbody>
     <tr ng-repeat="restaurant in restaurants">
-        <td contenteditable="true" id="updateRestaurantBorough{{restaurant.restaurant_id}}">{{restaurant.borough}}</td>
-        <td contenteditable="true" id="updateRestaurantCuisine{{restaurant.restaurant_id}}">{{restaurant.cuisine}}</td>
-        <td contenteditable="true" id="updateRestaurantName{{restaurant.restaurant_id}}">{{restaurant.name}}</td>
-        <td contenteditable="true" id="updateRestaurantID{{restaurant.restaurant_id}}">{{restaurant.restaurant_id}}</td>
+        <td>{{restaurant.restaurant_id}}</td>
+        <td contenteditable="true" id="updateRestaurantName{{restaurant._id}}">{{restaurant.name}}</td>
+        <td contenteditable="true" id="updateRestaurantCuisine{{restaurant._id}}">{{restaurant.cuisine}}</td>
+        <td contenteditable="true" id="updateRestaurantBorough{{restaurant._id}}">{{restaurant.borough}}</td>
 
-        <td><img src="images/info.png" ng-click="showRestaurant(restaurant.restaurant_id)"/></td>
-        <td><img src="images/save.png" ng-click="updateRestaurant(restaurant.restaurant_id)"/></td>
-        <td><img src="images/erase.png" ng-click="deleteRestaurant(restaurant.restaurant_id)"/></td>
+        <td><img src="images/info.png" ng-click="showRestaurant(restaurant._id)"/></td>
+        <td><img src="images/save.png" ng-click="updateRestaurant(restaurant._id)"/></td>
+        <td><img src="images/erase.png" ng-click="deleteRestaurant(restaurant._id)"/></td>
     </tr>
     </tbody>
 </table>
