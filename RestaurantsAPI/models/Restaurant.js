@@ -32,7 +32,8 @@ var RestaurantSchema   = new Schema({
     borough: String,
     cuisine: String,
     name: String,
-    grades: [GradesSchema]
+    grades: [GradesSchema],
+    restaurant_id: Number
 
 });
 

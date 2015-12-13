@@ -16,6 +16,8 @@ module.exports.store = function(req, res) {
     // Address Schema
     restaurant.borough = req.body.borough;
     restaurant.cuisine = req.body.cuisine;
+    restaurant.name = req.body.name;
+    restaurant.restaurant_id = req.body.restaurant_id;
 
     restaurant.grades.push({date: req.body.date, grade: req.body.grade, score: req.body.score});
 
@@ -82,7 +84,7 @@ module.exports.update = function(req, res) {
 
         if (err)
             res.send(err);
-
+        restaurant.name = req.body.name;
         restaurant.borough = req.body.borough;
         restaurant.cuisine = req.body.cuisine;
 
