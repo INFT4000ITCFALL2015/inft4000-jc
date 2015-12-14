@@ -20,10 +20,12 @@
 <body ng-controller="restaurantController">
 <h1 class="bg-success">Last Operation Status: {{message}}</h1>
 <div id="restaurantReport" ng-show="displayReport" ng-click="hideReport()">
+    <p>Restaurant ID: {{selectedRestaurant.restaurant_id}}</p>
+    <p>Name: {{selectedRestaurant.name}}</p>
     <p>Borough: {{selectedRestaurant.borough}}</p>
     <p>Cuisine: {{selectedRestaurant.cuisine}}</p>
-    <p>Name: {{selectedRestaurant.name}}</p>
-    <p>Restaurant ID: {{selectedRestaurant.restaurant_id}}</p>
+    <p>Address: {{selectedRestaurant.grade}}</p>
+
 </div>
 
 <h3>Enter a borough, cuisine, name, and restaurant ID to insert.</h3>

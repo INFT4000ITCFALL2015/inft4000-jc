@@ -10,7 +10,7 @@
         return $resource(
             "http://localhost:3000/api/restaurants/:_id",
             null,
-            {'update': { method:'PUT'}, 'query':  {method:'GET', isArray:true}
+            {'update': { method:'PUT'}
         });
     });
 
@@ -46,8 +46,9 @@
 
             console.log("In Angular showRestaurant method ..."); //used to see where we are
 
-            Restaurant.query({ restaurant_id: restaurantId }, function(data) {
-                $scope.selectedRestaurant = data[0];
+            Restaurant.get({ _id: restaurantId }, function(data) {
+                $scope.selectedRestaurant = data;
+                console.log(data);
             });
 
             $scope.displayReport = true;
