@@ -4,7 +4,7 @@
 
 (function(){
 
-    var app = angular.module('myApp',['ngResource']);
+    var app = angular.module('myApp' ,['ngResource', 'angularUtils.directives.dirPagination']);
 
     app.factory("Restaurant", function($resource) {
         return $resource(
@@ -72,6 +72,14 @@
                 street:        $scope.newStreet,
                 zipcode:       $scope.newZipCode
             };
+
+            //var data = {
+            //    borough:       $scope.newBorough,
+            //    cuisine:       $scope.newCuisine,
+            //    name:          $scope.newName,
+            //    restaurant_id: $scope.newRestaurantID,
+            //    address: { building: $scope.newBuilding, street: $scope.newStreet, zipcode: $scope.newZipCode},
+            //    grade: { date: $scope.newDate, grade: $scope.newGrade, score: $scope.newScore}};
 
             $scope.message = Restaurant.save(data);
         };//end of addRestaurant()

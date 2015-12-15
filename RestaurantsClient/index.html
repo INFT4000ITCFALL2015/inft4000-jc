@@ -7,24 +7,36 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="scripts.js"></script>
+    <script src="bower_components/angular-utils-pagination/dirPagination.js"></script>
     <style type="text/css">
         #restaurantReport {
             position: fixed;
-            top: 200px;
-            left: 200px;
-            width: 400px;
-            background-color: moccasin;
+            height: 100%;
+            width: 100%;
+            background-color: cornflowerblue;
+            font-size: 20pt;
+        }
+        h2{
+            text-decoration: underline;
         }
     </style>
 </head>
 <body ng-controller="restaurantController">
 <h1 class="bg-success">Last Operation Status: {{message}}</h1>
 <div id="restaurantReport" ng-show="displayReport" ng-click="hideReport()">
+    <h2>Info</h2>
     <p>Restaurant ID: {{selectedRestaurant.restaurant_id}}</p>
     <p>Name: {{selectedRestaurant.name}}</p>
     <p>Borough: {{selectedRestaurant.borough}}</p>
     <p>Cuisine: {{selectedRestaurant.cuisine}}</p>
-    <p>Address: {{selectedRestaurant.grade}}</p>
+    <h2>Address</h2>
+    <p>Building #: {{selectedRestaurant.address[0].building}}</p>
+    <p>Street: {{selectedRestaurant.address[0].street}}</p>
+    <p>Zipcode: {{selectedRestaurant.address[0].zipcode}}</p>
+    <h2>Grade</h2>
+    <p>Date: {{selectedRestaurant.grades[0].date}}</p>
+    <p>Score: {{selectedRestaurant.grades[0].score}}</p>
+    <p>Grade: {{selectedRestaurant.grades[0].grade}}</p>
 
 </div>
 
@@ -72,6 +84,14 @@
     <button type="submit" class="btn btn-default">Submit</button>
 </form>
 <hr />
+
+<form class="form-inline" style="margin-bottom: 10px;">
+    <div class="form-group">
+        <label >Search</label>
+        <input type="text" ng-model="search" class="form-control" placeholder="Search">
+    </div>
+</form>
+
 <button ng-click="refreshRestaurants()">Refresh Table</button>
 <table class="table table-bordered">
     <thead>
@@ -84,7 +104,7 @@
     <th></th>
     </thead>
     <tbody>
-    <tr ng-repeat="restaurant in restaurants">
+    <tr dir-paginate = "restaurant in restaurants|filter:search|itemsPerPage:20" >
         <td>{{restaurant.restaurant_id}}</td>
         <td contenteditable="true" id="updateRestaurantName{{restaurant._id}}">{{restaurant.name}}</td>
         <td contenteditable="true" id="updateRestaurantCuisine{{restaurant._id}}">{{restaurant.cuisine}}</td>
@@ -96,5 +116,10 @@
     </tr>
     </tbody>
 </table>
+<dir-pagination-controls
+        max-size="5"
+        direction-links="true"
+        boundary-links="true" >
+</dir-pagination-controls>
 </body>
 </html>
