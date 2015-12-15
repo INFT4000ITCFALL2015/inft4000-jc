@@ -6,6 +6,7 @@ var Schema       = mongoose.Schema;
 
 var GradesSchema = new Schema ({
 
+    _id: false,
     grade: String,
     score: Number,
     date: Date
@@ -13,12 +14,14 @@ var GradesSchema = new Schema ({
 });
 
 var CoordSchema = new Schema({
+    _id: false,
     x: Number,
     y: Number
 });
 
 var AddressSchema = new Schema({
 
+    _id: false,
     building: String,
     coord: [CoordSchema],
     street: String,
@@ -28,7 +31,7 @@ var AddressSchema = new Schema({
 
 var RestaurantSchema   = new Schema({
 
-    address: [AddressSchema],
+    address: {type: [AddressSchema]},
     borough: String,
     cuisine: String,
     name: String,

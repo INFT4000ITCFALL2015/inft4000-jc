@@ -39,7 +39,7 @@ module.exports.index = function(req, res) {
 
     console.log("In controller index method...");
 
-    Restaurant.find().limit(10).sort({_id: -1}).exec(function(err, restaurant) {
+    Restaurant.find().limit(2500).sort({_id: -1}).exec(function(err, restaurant) {
         if (err)
             res.send(err);
 
