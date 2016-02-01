@@ -1,0 +1,20 @@
+<!Doctype html>
+<head>
+    <link rel="stylesheet" href="../css/puzzle_style.css"/>
+</head>
+<body>
+    <script src="../js/jquery-2.2.0.min.js"></script>
+    <script>
+        window.JQuery
+            || document
+                .write('<script src="../js/jquery-2.2.0.min.js"><\/script>');
+    </script>
+    <script src="../js/puzzle_js.js"></script>
+    <script>
+        draw4By4();
+        loadPuzzleNumbers(16);
+        if(checkWinning()){
+            alert('Winner!');
+        }
+    </script>
+</body>
