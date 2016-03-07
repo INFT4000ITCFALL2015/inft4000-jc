@@ -15,111 +15,20 @@ $("#reset").click(function(){
 
 $("#btn2").click(function(){
     //load world leaders quiz
-    $.getJSON('cap.json', function(json){
-        shuffle(json);
-        //Question 1
-        $("#q1").text(json[0].question);
-        $("#a1").append(json[0].a);
-        $("#b1").append(json[0].b);
-        $("#c1").append(json[0].c);
-        $("#d1").append(json[0].d);
-        $("#answer1").append(json[0].answer);
-
-        //Question 2
-        $("#q2").text(json[1].question);
-        $("#a2").append(json[1].a);
-        $("#b2").append(json[1].b);
-        $("#c2").append(json[1].c);
-        $("#d2").append(json[1].d);
-        $("#answer2").append(json[1].answer);
-
-        //Question 3
-        $("#q3").text(json[2].question);
-        $("#a3").append(json[2].a);
-        $("#b3").append(json[2].b);
-        $("#c3").append(json[2].c);
-        $("#d3").append(json[2].d);
-        $("#answer3").append(json[2].answer);
-
-        //Question 4
-        $("#q4").text(json[3].question);
-        $("#a4").append(json[3].a);
-        $("#b4").append(json[3].b);
-        $("#c4").append(json[3].c);
-        $("#d4").append(json[3].d);
-        $("#answer4").append(json[3].answer);
-
-        //Question 5
-        $("#q5").text(json[4].question);
-        $("#a5").append(json[4].a);
-        $("#b5").append(json[4].b);
-        $("#c5").append(json[4].c);
-        $("#d5").append(json[4].d);
-        $("#answer5").append(json[4].answer);
-
-        //Handle Buttons
-        $("#btn1").prop('disabled', true);
-        $("#btn2").prop('disabled', true);
-        $("#btn3").prop('disabled', true);
-    });
-
+    loadQuiz('cap.json')
 });
 
 $("#btn1").click(function(){
-    //load world leaders quiz
-    $.getJSON('wlq.json', function(json){
-        shuffle(json);
-        //Question 1
-        $("#q1").text(json[0].question);
-        $("#a1").append(json[0].a);
-        $("#b1").append(json[0].b);
-        $("#c1").append(json[0].c);
-        $("#d1").append(json[0].d);
-        $("#answer1").append(json[0].answer);
-
-        //Question 2
-        $("#q2").text(json[1].question);
-        $("#a2").append(json[1].a);
-        $("#b2").append(json[1].b);
-        $("#c2").append(json[1].c);
-        $("#d2").append(json[1].d);
-        $("#answer2").append(json[1].answer);
-
-        //Question 3
-        $("#q3").text(json[2].question);
-        $("#a3").append(json[2].a);
-        $("#b3").append(json[2].b);
-        $("#c3").append(json[2].c);
-        $("#d3").append(json[2].d);
-        $("#answer3").append(json[2].answer);
-
-        //Question 4
-        $("#q4").text(json[3].question);
-        $("#a4").append(json[3].a);
-        $("#b4").append(json[3].b);
-        $("#c4").append(json[3].c);
-        $("#d4").append(json[3].d);
-        $("#answer4").append(json[3].answer);
-
-        //Question 5
-        $("#q5").text(json[4].question);
-        $("#a5").append(json[4].a);
-        $("#b5").append(json[4].b);
-        $("#c5").append(json[4].c);
-        $("#d5").append(json[4].d);
-        $("#answer5").append(json[4].answer);
-
-        //Handle Buttons
-        $("#btn1").prop('disabled', true);
-        $("#btn2").prop('disabled', true);
-        $("#btn3").prop('disabled', true);
-    });
-
+    loadQuiz('wlq.json')
 });
 
 $("#btn3").click(function(){
+    loadQuiz('ac.json')
+});
     //load world leaders quiz
-    $.getJSON('ac.json', function(json){
+
+function loadQuiz(source){
+    $.getJSON(source, function(json){
         shuffle(json);
         //Question 1
         $("#q1").text(json[0].question);
@@ -166,8 +75,7 @@ $("#btn3").click(function(){
         $("#btn2").prop('disabled', true);
         $("#btn3").prop('disabled', true);
     });
-
-});
+}
 
 function shuffle(sourceArray) {
     for (var i = 0; i < sourceArray.length - 1; i++) {
