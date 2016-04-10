@@ -78,7 +78,6 @@ $(document).ready(function(){
             }
         });
     });
-
 });
 
 function getContacts(){
@@ -102,3 +101,20 @@ function getContacts(){
         $('#contacts').html(output);
     });
 }
+
+$('body').on('click','img',function(){
+    $('#settings').css({"display": "none"});
+    var btnDiv = $('#btns');
+    $(btnDiv).css({"float": "right"});
+    $(btnDiv).append('<h4>Themes:</h4>');
+    $(btnDiv).append('<button class="btn-m btn-primary" id="dark">Dark</button> ');
+    $(btnDiv).append('<button class="btn-m btn-primary" id="light">Light</button>');
+});
+
+$('body').on('click', '#dark', function(){
+    $('link[href="bs2.css"]').attr('href','bs1.css');
+});
+
+$('body').on('click', '#light', function(){
+    $('link[href="bs1.css"]').attr('href','bs2.css');
+});

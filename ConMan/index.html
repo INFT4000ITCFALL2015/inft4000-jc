@@ -1,14 +1,16 @@
 <html>
 <head>
     <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link  id="original" rel="stylesheet" href="bs1.css"/>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <script src="main.js"></script>
 </head>
 <body onload="getContacts()">
     <div class="container">
         <h3>Enter Contact</h3>
-        <form id="add-contact" class="col-md-4">
+        <div id="btns">
+            <img src="settings.png" width="50" height="50" alt="settings" id="settings" class="settings" style="float:right;"/>
+        </div>
+            <form id="add-contact" class="col-md-4">
             <div class="form-group">
                 <label>First Name</label>
                 <input type="text" id="fName" class="form-control"/>
@@ -43,9 +45,16 @@
             </div>
             <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
         </form>
+        <form id="search" class="col-md-8">
+            <div class="form-group">
+                <label>Search</label>
+                <input type="text" id="searchBox" class="form-control"/>
+            </div>
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
+        </form>
         <div class="col-md-8" id="contacts">
-
         </div>
     </div>
 </body>
+<script src="main.js"></script>
 </html>
