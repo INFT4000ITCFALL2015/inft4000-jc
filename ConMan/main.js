@@ -87,14 +87,15 @@ function getContacts(){
         var output = '<table class="table table-bordered" id="myTable">';
         output += '<thead>';
         output += '<tr>';
-        output += '<th>First Name</th>';
-        output += '<th>Last Name</th>';
-        output += '<th>Email</th>';
-        output += '<th>Phone</th>';
-        output += '<th>Twitter</th>';
-        output += '<th>Facebook</th>';
-        output += '<th>LinkedIn</th>';
-        output += '<th>Reddit</th>';
+        output += '<th><img src="img/people.png" alt="people"></th>';
+        output += '<th><img src="img/people.png" alt="people"></th>';
+        output += '<th><img src="img/email.png" alt="email"></th>';
+        output += '<th><img src="img/phone.png" alt="phone"></th>';
+        output += '<th><img src="img/twit.png" alt="twit"></th>';
+        output += '<th><img src="img/fb.png" alt="fb"></th>';
+        output += '<th><img src="img/link.png" alt="link"></th>';
+        output += '<th><img src="img/red.png" alt="red"></th>';
+        output += '<th colspan="2">Options</th>';
         output += '</tr>';
         output += '</thead>';
         output += '<tbody>';
@@ -104,11 +105,12 @@ function getContacts(){
             output += '<td>'+data.lName+'</td>';
             output += '<td>'+data.email+'</td>';
             output += '<td>'+data.phone+'</td>';
-            output += '<td>'+data.twitter+'</td>';
-            output += '<td>'+data.facebook+'</td>';
-            output += '<td>'+data.linkedIn+'</td>';
-            output += '<td>'+data.reddit+'</td>';
-            output += '<td><button class="btn-xs btn-primary" id="edit" data-id="'+data._id.$oid+'" data-first="'+data.fName+'" data-last="'+data.lName+'" data-email="'+data.email+'" data-phone="'+data.phone+'" data-twitter="'+data.twitter+'" data-facebook="'+data.facebook+'" data-link="'+data.linkedIn+'" data-reddit="'+data.reddit+'">Edit</button> <button class="btn-xs btn-danger" id="delete" data-id="'+data._id.$oid+'">Delete</button></td>';
+            output += '<td><a href="'+data.twitter+ '" target="blank">'+data.twitter+'</a></td>';
+            output += '<td><a href="'+data.facebook+ '" target="blank">'+data.facebook+'</a></td>';
+            output += '<td><a href="'+data.linkedIn+ '" target="blank">'+data.linkedIn+'</a></td>';
+            output += '<td><a href="'+data.reddit+ '" target="blank">'+data.reddit+'</a></td>';
+            output += '<td><button class="btn-xs btn-primary" id="edit" data-id="'+data._id.$oid+'" data-first="'+data.fName+'" data-last="'+data.lName+'" data-email="'+data.email+'" data-phone="'+data.phone+'" data-twitter="'+data.twitter+'" data-facebook="'+data.facebook+'" data-link="'+data.linkedIn+'" data-reddit="'+data.reddit+'">Edit</button></td>';
+            output += '<td><button class="btn-xs btn-danger" id="delete" data-id="'+data._id.$oid+'">Delete</button></td>';
             output += '</tr>';
         });
         output += '</table>';
@@ -122,30 +124,31 @@ $('body').on('click','img',function(){
 });
 
 $('body').on('click', '#dark', function(){
-    $('link[href="bs2.css"]').attr('href','bs1.css');
+    $('link[href="css/bs2.css"]').attr('href','css/bs1.css');
 });
 
 $('body').on('click', '#light', function(){
-    $('link[href="bs1.css"]').attr('href','bs2.css');
-});
-
-$( "#autocomplete" ).autocomplete({
-    source: function( request, response ) {
-        $.ajax({
-            url: "https://api.mlab.com/api/1/databases/conman/collections/contacts?q={'fName': '"+request.term+"'}&apiKey=6BVVlG7ON_ObPYKVWK6NW4A8eIRxiizp",
-            dataType: "json",
-            data: {term: request.term},
-            success: function(data) {
-                response($.map(data, function(item) {
-                    return {
-                        label: item.fName + " " + item.lName
-                    };
-                }));
-            }
-        });
-    },
-    minLength: 2
-
+    $('link[href="css/bs1.css"]').attr('href','css/bs2.css');
 });
 
 $('table tbody').sortable();
+
+$("#search").on("keyup", function() {
+    var value = $(this).val();
+
+    $("table tr").each(function(index) {
+        if (index !== 0) {
+
+            $row = $(this);
+
+            var id = $row.find("td:first").text();
+
+            if (id.indexOf(value) !== 0) {
+                $row.hide();
+            }
+            else {
+                $row.show();
+            }
+        }
+    });
+});
