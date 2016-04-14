@@ -1,16 +1,23 @@
 <html>
 <head>
-    <title></title>
     <link  id="original" rel="stylesheet" href="bs1.css"/>
+    <link  rel="stylesheet" href="jquery-ui.structure.css"/>
+    <link  rel="stylesheet" href="jquery-ui.css"/>
+    <link  rel="stylesheet" href="jquery-ui.theme.css"/>
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script src="jquery.tablesorter.js"></script>
 </head>
 <body onload="getContacts()">
-    <div class="container">
-        <h3>Enter Contact</h3>
-        <div id="btns">
-            <img src="settings.png" width="50" height="50" alt="settings" id="settings" class="settings" style="float:right;"/>
+    <div>
+        <h3 style="margin-left:15px;">Enter Contact</h3>
+        <img src="settings.png" width="50" height="50" alt="settings" id="settings" class="settings" style="float:right;"/>
+        <div id="btns" style="display: none; float: right; margin-right: 10px;">
+            <h4>Themes:</h4>
+            <button class="btn-m btn-primary" id="dark">Dark</button>
+            <button class="btn-m btn-primary" id="light">Light</button>
         </div>
-            <form id="add-contact" class="col-md-4">
+            <form id="add-contact" class="col-md-2 center-block">
             <div class="form-group">
                 <label>First Name</label>
                 <input type="text" id="fName" class="form-control"/>
@@ -45,14 +52,14 @@
             </div>
             <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
         </form>
-        <form id="search" class="col-md-8">
+        <form id="searchForm" class="col-md-10">
             <div class="form-group">
                 <label>Search</label>
-                <input type="text" id="searchBox" class="form-control"/>
+                <input type="text" id="autocomplete" class="form-control"/>
             </div>
-            <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
+            <button id="search" class="btn btn-primary">Search</button>
         </form>
-        <div class="col-md-8" id="contacts">
+        <div class="col-md-10" id="contacts">
         </div>
     </div>
 </body>

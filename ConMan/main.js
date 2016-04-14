@@ -84,31 +84,41 @@ function getContacts(){
     $.ajax({
         url: 'https://api.mlab.com/api/1/databases/conman/collections/contacts?apiKey=6BVVlG7ON_ObPYKVWK6NW4A8eIRxiizp'
     }).done(function(data){
-        var output = '<div>';
+        var output = '<table class="table table-bordered" id="myTable">';
+        output += '<thead>';
+        output += '<tr>';
+        output += '<th>First Name</th>';
+        output += '<th>Last Name</th>';
+        output += '<th>Email</th>';
+        output += '<th>Phone</th>';
+        output += '<th>Twitter</th>';
+        output += '<th>Facebook</th>';
+        output += '<th>LinkedIn</th>';
+        output += '<th>Reddit</th>';
+        output += '</tr>';
+        output += '</thead>';
+        output += '<tbody>';
         $.each(data, function(key, data){
-            output += '<div class="well">';
-            output += '<h3>'+data.fName+' '+data.lName+'</h3>';
-            output += '<p>Email: '+data.email+'</p>';
-            output += '<p>Phone: '+data.phone+'</p>';
-            output += '<p>Twitter: '+data.twitter+'</p>';
-            output += '<p>Facebook: '+data.facebook+'</p>';
-            output += '<p>LinkedIn: '+data.linkedIn+'</p>';
-            output += '<p>Reddit: '+data.reddit+'</p>';
-            output += '<button class="btn-xs btn-primary" id="edit" data-id="'+data._id.$oid+'" data-first="'+data.fName+'" data-last="'+data.lName+'" data-email="'+data.email+'" data-phone="'+data.phone+'" data-twitter="'+data.twitter+'" data-facebook="'+data.facebook+'" data-link="'+data.linkedIn+'" data-reddit="'+data.reddit+'">Edit</button> <button class="btn-xs btn-danger" id="delete" data-id="'+data._id.$oid+'">Delete</button>';
-            output += '</div>';
+            output += '<tr>';
+            output += '<td>'+data.fName+'</td>';
+            output += '<td>'+data.lName+'</td>';
+            output += '<td>'+data.email+'</td>';
+            output += '<td>'+data.phone+'</td>';
+            output += '<td>'+data.twitter+'</td>';
+            output += '<td>'+data.facebook+'</td>';
+            output += '<td>'+data.linkedIn+'</td>';
+            output += '<td>'+data.reddit+'</td>';
+            output += '<td><button class="btn-xs btn-primary" id="edit" data-id="'+data._id.$oid+'" data-first="'+data.fName+'" data-last="'+data.lName+'" data-email="'+data.email+'" data-phone="'+data.phone+'" data-twitter="'+data.twitter+'" data-facebook="'+data.facebook+'" data-link="'+data.linkedIn+'" data-reddit="'+data.reddit+'">Edit</button> <button class="btn-xs btn-danger" id="delete" data-id="'+data._id.$oid+'">Delete</button></td>';
+            output += '</tr>';
         });
-        output += '</div>';
+        output += '</table>';
         $('#contacts').html(output);
+        $("#myTable").tablesorter();
     });
 }
 
 $('body').on('click','img',function(){
-    $('#settings').css({"display": "none"});
-    var btnDiv = $('#btns');
-    $(btnDiv).css({"float": "right"});
-    $(btnDiv).append('<h4>Themes:</h4>');
-    $(btnDiv).append('<button class="btn-m btn-primary" id="dark">Dark</button> ');
-    $(btnDiv).append('<button class="btn-m btn-primary" id="light">Light</button>');
+    $('#btns').toggle();
 });
 
 $('body').on('click', '#dark', function(){
@@ -118,3 +128,24 @@ $('body').on('click', '#dark', function(){
 $('body').on('click', '#light', function(){
     $('link[href="bs1.css"]').attr('href','bs2.css');
 });
+
+$( "#autocomplete" ).autocomplete({
+    source: function( request, response ) {
+        $.ajax({
+            url: "https://api.mlab.com/api/1/databases/conman/collections/contacts?q={'fName': '"+request.term+"'}&apiKey=6BVVlG7ON_ObPYKVWK6NW4A8eIRxiizp",
+            dataType: "json",
+            data: {term: request.term},
+            success: function(data) {
+                response($.map(data, function(item) {
+                    return {
+                        label: item.fName + " " + item.lName
+                    };
+                }));
+            }
+        });
+    },
+    minLength: 2
+
+});
+
+$('table tbody').sortable();
